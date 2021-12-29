@@ -1,11 +1,16 @@
-package me.gabu.gabazar.editoras.adapters.data.impl;
+package me.gabu.gabazar.editoras.adapters.data.dao.impl;
 
 import java.util.List;
 
-import me.gabu.gabazar.editoras.adapters.data.EditoraData;
+import org.springframework.stereotype.Component;
+
+import lombok.AllArgsConstructor;
+import me.gabu.gabazar.editoras.adapters.data.dao.EditoraDAO;
 import me.gabu.gabazar.editoras.core.model.Editora;
 
-public class EditoraDataImpl implements EditoraData {
+@Component
+@AllArgsConstructor
+public class EditoraDAOImpl implements EditoraDAO {
 
     @Override
     public Editora save(Editora editora) {

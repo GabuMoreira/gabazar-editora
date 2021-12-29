@@ -1,10 +1,10 @@
-package me.gabu.gabazar.editoras.adapters.data;
+package me.gabu.gabazar.editoras.adapters.data.dao;
 
 import java.util.List;
 
 import me.gabu.gabazar.editoras.core.model.Editora;
 
-public interface EditoraData {
+public interface EditoraDAO {
 
     public Editora save(Editora editora);
     public List<Editora> listAll();
