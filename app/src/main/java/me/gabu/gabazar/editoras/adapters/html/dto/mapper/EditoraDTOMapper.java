@@ -1,5 +1,7 @@
 package me.gabu.gabazar.editoras.adapters.html.dto.mapper;
 
+import java.util.Collection;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -14,5 +16,9 @@ public interface EditoraDTOMapper {
     EditoraDTO editoraToEditoraDto(Editora editora);
 
     Editora editoraDtoToEditora(EditoraDTO editoradto);
+
+    Collection<EditoraDTO> editoraToEditoraDto(Collection<Editora> editora);
+
+    Collection<Editora> editoraDtoToEditora(Collection<EditoraDTO> editoradto);
 
 }
