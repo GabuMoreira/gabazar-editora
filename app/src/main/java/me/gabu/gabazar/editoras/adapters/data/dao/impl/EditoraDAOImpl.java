@@ -6,15 +6,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import me.gabu.gabazar.editoras.adapters.data.dao.EditoraDAO;
 import me.gabu.gabazar.editoras.adapters.data.entity.EditoraEntity;
 import me.gabu.gabazar.editoras.adapters.data.entity.mapper.EditoraEntityMapper;
 import me.gabu.gabazar.editoras.adapters.data.repository.EditoraRepository;
 import me.gabu.gabazar.editoras.core.model.Editora;
 
+@Slf4j
 @Service
-@NoArgsConstructor
 public class EditoraDAOImpl implements EditoraDAO {
 
     @Autowired
@@ -24,7 +24,7 @@ public class EditoraDAOImpl implements EditoraDAO {
     @Override
     public Editora save(Editora editora) {
         EditoraEntity enditoraEntity = mapper.editoraToEditoraEntity(editora);
-
+        log.info("Enviando editora [{}] para o repository", editora);
         return mapper.editoraEntityToEditora(repository.save(enditoraEntity));
     }
 
