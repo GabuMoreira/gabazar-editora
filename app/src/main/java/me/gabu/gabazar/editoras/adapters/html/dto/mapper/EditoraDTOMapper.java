@@ -7,9 +7,9 @@ import me.gabu.gabazar.editoras.adapters.html.dto.EditoraDTO;
 import me.gabu.gabazar.editoras.core.model.Editora;
 
 @Mapper
-public interface EditoraMapper {
+public interface EditoraDTOMapper {
 
-    EditoraMapper INSTANCE = Mappers.getMapper(EditoraMapper.class);
+    EditoraDTOMapper INSTANCE = Mappers.getMapper(EditoraDTOMapper.class);
 
     EditoraDTO editoraToEditoraDto(Editora editora);
 

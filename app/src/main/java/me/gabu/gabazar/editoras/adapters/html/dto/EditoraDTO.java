@@ -13,6 +13,7 @@ public class EditoraDTO {
     private String site;
     private Date dataCriacao;
     private Date dataAlteracao;
-    private String usuario;
+    private String usuarioCriacao;
+    private String usuarioAlteracao;
 
 }
