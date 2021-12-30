@@ -1,17 +1,17 @@
 package me.gabu.gabazar.editoras.core.usecases.impl;
 
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import lombok.AllArgsConstructor;
 import me.gabu.gabazar.editoras.adapters.data.dao.EditoraDAO;
 import me.gabu.gabazar.editoras.core.model.Editora;
 import me.gabu.gabazar.editoras.core.usecases.SalvarEditoraUseCase;
 
-@Component
-@AllArgsConstructor
+@Service
 public class SalvarEditoraUseCaseImpl implements SalvarEditoraUseCase {
 
-    private static EditoraDAO dao;
+    @Autowired
+    private EditoraDAO dao;
 
     @Override
     public Editora run(Editora editora) {
