@@ -1,5 +1,7 @@
 package me.gabu.gabazar.editoras.adapters.data.entity.mapper;
 
+import java.util.Collection;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -14,5 +16,9 @@ public interface EditoraEntityMapper {
     EditoraEntity editoraToEditoraEntity(Editora editora);
 
     Editora editoraEntityToEditora(EditoraEntity editoraEntity);
+
+    Collection<EditoraEntity> editoraToEditoraEntity(Collection<Editora> editora);
+
+    Collection<Editora> editoraEntityToEditora(Collection<EditoraEntity> editoraEntity);
 
 }

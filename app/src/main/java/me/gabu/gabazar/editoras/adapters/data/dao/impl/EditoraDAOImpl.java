@@ -1,7 +1,6 @@
 package me.gabu.gabazar.editoras.adapters.data.dao.impl;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,18 +23,18 @@ public class EditoraDAOImpl implements EditoraDAO {
     @Override
     public Editora save(Editora editora) {
         EditoraEntity enditoraEntity = mapper.editoraToEditoraEntity(editora);
-        log.info("Enviando editora [{}] para o repository", editora);
+        log.info("[DAO] [PERSIST] [{}]", editora);
         return mapper.editoraEntityToEditora(repository.save(enditoraEntity));
     }
 
     @Override
-    public List<Editora> listAll() {
-        return Collections.emptyList();
+    public Collection<Editora> listAll() {
+        return mapper.editoraEntityToEditora(repository.findAll());
     }
 
     @Override
-    public List<Editora> findByExample(Editora editora) {
-        return Collections.emptyList();
+    public Collection<Editora> findByNome(String name) {
+        return mapper.editoraEntityToEditora(repository.findByNome(name));
     }
 
     @Override

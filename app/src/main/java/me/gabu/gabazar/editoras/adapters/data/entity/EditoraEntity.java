@@ -1,10 +1,9 @@
 package me.gabu.gabazar.editoras.adapters.data.entity;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PostPersist;
 import javax.persistence.PostRemove;
@@ -27,9 +26,9 @@ import lombok.extern.slf4j.Slf4j;
 public class EditoraEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String nome;
+    private String cnpj;
     private String site;
     private Date dataCriacao;
     private Date dataAlteracao;
@@ -38,6 +37,7 @@ public class EditoraEntity {
 
     @PrePersist
     public void prePersist() {
+        id = UUID.randomUUID().toString();
         dataCriacao = new Date();
     }
 
@@ -48,17 +48,17 @@ public class EditoraEntity {
 
     @PostPersist
     public void postPersist() {
-        log.info("Usuario {} cadastrou a editora {}", usuarioCriacao, this);
+        log.info("[ENTITY] [POS-PERSIST] Usuario {} cadastrou a editora {}", usuarioCriacao, this);
     }
 
     @PostUpdate
     public void postUpdate() {
-        log.info("Usuario {} atualizou os dados da editora {}", usuarioAlteracao, this);
+        log.info("[ENTITY] [POS-UPDATE] Usuario {} atualizou os dados da editora {}", usuarioAlteracao, this);
     }
 
     @PostRemove
     public void postRemoval() {
-        log.info("Usuario {} apagou a editora {}", usuarioAlteracao, this);
+        log.info("[ENTITY] [POS-REMOVAL] Usuario {} apagou a editora {}", usuarioAlteracao, this);
     }
 
 }
