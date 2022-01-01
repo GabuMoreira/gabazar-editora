@@ -15,6 +15,6 @@ public interface EditoraService {
 
     public Collection<Editora> buscarEditoras(String nome);
 
-    public void apagarEditora(String editoraId);
+    public void apagarEditora(String editoraId, String usuario);
 
 }

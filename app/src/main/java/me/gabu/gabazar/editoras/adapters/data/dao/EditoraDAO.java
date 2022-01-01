@@ -11,5 +11,5 @@ public interface EditoraDAO {
     public Collection<Editora> listAll();
     public Collection<Editora> findByNome(String name);
     public Editora update(Editora editora);
-    public String delete(String editoraId);
+    public String delete(Editora editora);
 }

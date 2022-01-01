@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import me.gabu.gabazar.editoras.core.model.Editora;
+import me.gabu.gabazar.editoras.core.usecases.ApagarEditoraUseCase;
 import me.gabu.gabazar.editoras.core.usecases.AtualizarEditoraUseCase;
 import me.gabu.gabazar.editoras.core.usecases.ConsultarEditoraUseCase;
 import me.gabu.gabazar.editoras.core.usecases.CriarEditoraUseCase;
@@ -21,6 +22,7 @@ public class EditoraServiceImpl implements EditoraService {
     private @Autowired ConsultarEditoraUseCase consultarEditora;
     private @Autowired AtualizarEditoraUseCase atualizarEditora;
     private @Autowired ListarEditorasUseCase listarEditoras;
+    private @Autowired ApagarEditoraUseCase apagarEditora;
 
     @Override
     public Editora criarEditora(Editora editora, String usuario) {
@@ -32,7 +34,7 @@ public class EditoraServiceImpl implements EditoraService {
     public Editora consultaEditora(String editoraId) {
         return consultarEditora.run(editoraId);
     }
-    
+
     @Override
     public Editora atualizarEditora(Editora editora, String usuario) {
         log.info("[SERVICE] [UPDATE] [Usuario: {}]  {}", usuario, editora);
@@ -45,8 +47,8 @@ public class EditoraServiceImpl implements EditoraService {
     }
 
     @Override
-    public void apagarEditora(String editoraId) {
-
+    public void apagarEditora(String editoraId, String usuario) {
+        apagarEditora.run(editoraId, usuario);
     }
 
 }

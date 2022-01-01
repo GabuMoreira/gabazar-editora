@@ -6,6 +6,7 @@ import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -68,6 +69,14 @@ public class EditoraController {
         editora.setId(id);
 
         return mapper.editoraToEditoraDto(service.atualizarEditora(editora, getUsuario(token)));
+    }
+
+    @DeleteMapping(value = "/{id}", produces = "application/json")
+    public @ResponseBody void delete(@PathParam("id") String id, @RequestHeader("token") String token) {
+        log.info("[DELETE] [/editoras/{}]", id);
+
+        validaToken(token);
+        service.apagarEditora(id, getUsuario(token));
     }
 
     private String getUsuario(String token) {
