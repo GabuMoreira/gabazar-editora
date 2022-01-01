@@ -2,9 +2,13 @@ package me.gabu.gabazar.editoras.adapters.html.in;
 
 import java.util.Collection;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -41,10 +45,38 @@ public class EditoraController {
     }
 
     @GetMapping(produces = "application/json")
-    public @ResponseBody Collection<EditoraDTO> get(@RequestParam(required=false) String nome, @RequestHeader("token") String token) {
+    public @ResponseBody Collection<EditoraDTO> get(@RequestParam(required = false) String nome,
+            @RequestHeader("token") String token) {
         validaToken(token);
 
         return mapper.editoraToEditoraDto(service.buscarEditoras(nome));
+    }
+
+    @GetMapping(value = "/{id}", produces = "application/json")
+    public @ResponseBody EditoraDTO getByID(@PathParam("id") String id, @RequestHeader("token") String token) {
+        validaToken(token);
+
+        return mapper.editoraToEditoraDto(service.consultaEditora(id));
+    }
+
+    @PatchMapping(value = "/{id}", produces = "application/json")
+    public @ResponseBody EditoraDTO patch(@PathParam("id") String id, @RequestHeader("token") String token,
+            @RequestBody EditoraDTO editoraDTO) {
+        log.info("[PATCH] [/editoras/{}] Request: {}", id, editoraDTO);
+
+        validaToken(token);
+        Editora editora = mapper.editoraDtoToEditora(editoraDTO);
+        editora.setId(id);
+
+        return mapper.editoraToEditoraDto(service.atualizarEditora(editora, getUsuario(token)));
+    }
+
+    @DeleteMapping(value = "/{id}", produces = "application/json")
+    public @ResponseBody void delete(@PathParam("id") String id, @RequestHeader("token") String token) {
+        log.info("[DELETE] [/editoras/{}]", id);
+
+        validaToken(token);
+        service.apagarEditora(id, getUsuario(token));
     }
 
     private String getUsuario(String token) {
