@@ -51,8 +51,9 @@ public class EditoraDAOImpl implements EditoraDAO {
     }
 
     @Override
-    public String delete(Editora editora) {
-        repository.delete(null);
+    public void delete(Editora editora) {
+        this.save(editora);
+        repository.deleteById(editora.getId());
     }
 
 }
