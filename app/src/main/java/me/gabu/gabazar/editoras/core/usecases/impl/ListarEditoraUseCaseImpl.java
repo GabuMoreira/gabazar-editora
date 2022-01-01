@@ -13,8 +13,7 @@ import me.gabu.gabazar.editoras.core.usecases.ListarEditorasUseCase;
 @Service
 public class ListarEditoraUseCaseImpl implements ListarEditorasUseCase {
 
-    @Autowired
-    private EditoraDAO dao;
+    private @Autowired EditoraDAO dao;
 
     @Override
     public Collection<Editora> run(String nome) {
