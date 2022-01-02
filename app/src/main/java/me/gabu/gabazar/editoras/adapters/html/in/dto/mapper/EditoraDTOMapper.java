@@ -1,11 +1,11 @@
-package me.gabu.gabazar.editoras.adapters.html.dto.mapper;
+package me.gabu.gabazar.editoras.adapters.html.in.dto.mapper;
 
 import java.util.Collection;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import me.gabu.gabazar.editoras.adapters.html.dto.EditoraDTO;
+import me.gabu.gabazar.editoras.adapters.html.in.dto.EditoraDTO;
 import me.gabu.gabazar.editoras.core.model.Editora;
 
 @Mapper

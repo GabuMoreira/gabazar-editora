@@ -15,8 +15,8 @@ import org.springframework.util.CollectionUtils;
 import me.gabu.gabazar.editoras.core.exceptions.BadRequestException;
 import me.gabu.gabazar.editoras.core.model.Editora;
 import me.gabu.gabazar.editoras.service.ValidationService;
-import me.gabu.gabazar.editoras.service.validations.CreateValidation;
-import me.gabu.gabazar.editoras.service.validations.UpdateValidation;
+import me.gabu.gabazar.editoras.service.validations.Create;
+import me.gabu.gabazar.editoras.service.validations.Update;
 import me.gabu.gabazar.editoras.service.validations.ValidationEnum;
 
 @Service
@@ -37,11 +37,11 @@ public class ValidationServiceImpl implements ValidationService {
     private Set<ConstraintViolation<Editora>> getContraints(Editora editora, ValidationEnum validation) {
         switch (validation) {
         case CREATE:
-            return validator.validate(editora, CreateValidation.class);
+            return validator.validate(editora, Create.class);
 
         case UPDATE:
         default:
-            return validator.validate(editora, UpdateValidation.class);
+            return validator.validate(editora, Update.class);
         }
     }
 
