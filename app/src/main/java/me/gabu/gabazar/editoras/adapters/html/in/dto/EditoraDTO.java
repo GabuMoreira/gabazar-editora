@@ -1,4 +1,4 @@
-package me.gabu.gabazar.editoras.adapters.html.dto;
+package me.gabu.gabazar.editoras.adapters.html.in.dto;
 
 import java.util.Date;
 
