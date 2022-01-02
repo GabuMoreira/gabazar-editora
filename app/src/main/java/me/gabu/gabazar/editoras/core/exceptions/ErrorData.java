@@ -1,5 +1,7 @@
 package me.gabu.gabazar.editoras.core.exceptions;
 
+import java.util.Collection;
+
 import org.springframework.http.HttpStatus;
 
 import lombok.AllArgsConstructor;
@@ -12,7 +14,7 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 public class ErrorData {
-    private String erro;
+    private Collection<String> errors;
     private String path;
     private int code;
     private HttpStatus status;
