@@ -34,6 +34,9 @@ public class AtualizarEditoraUseCaseImpl implements AtualizarEditoraUseCase {
             throw new BadRequestException("Campo site não pode estar vazio!");
 
         editora.setUsuarioAlteracao(usuario);
+        editora.setUsuarioCriacao(registroAnterior.getUsuarioCriacao());
+        editora.setDataCriacao(registroAnterior.getDataCriacao());
+
         return dao.update(editora);
     }
 
