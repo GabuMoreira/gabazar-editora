@@ -9,11 +9,11 @@ public interface EditoraService {
 
     public Editora criarEditora(Editora editora, String usuario);
 
-    public Editora consultaEditora(String editoraId);
+    public Editora consultarEditora(String editoraId);
 
     public Editora atualizarEditora(Editora editora, String usuario);
 
-    public Collection<Editora> buscarEditoras(String nome);
+    public Collection<Editora> listarEditoras(String nome);
 
     public void apagarEditora(String editoraId, String usuario);
 
