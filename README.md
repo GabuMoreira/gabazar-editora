@@ -1,5 +1,7 @@
-# Gabazar-editoras [![Build Status](https://app.travis-ci.com/gabazar/gabazar-editoras.svg?branch=main)](https://app.travis-ci.com/gabazar/gabazar-editoras) [![codecov](https://codecov.io/gh/gabazar/gabazar-editoras/branch/main/graph/badge.svg?token=6INNSA35FZ)](https://codecov.io/gh/gabazar/gabazar-editoras)
-Gabazar MS Editoras
+# Gabazar-editoras
+[![Build Status](https://app.travis-ci.com/gabazar/gabazar-editoras.svg?branch=main)](https://app.travis-ci.com/gabazar/gabazar-editoras)
+[![codecov](https://codecov.io/gh/gabazar/gabazar-editoras/branch/main/graph/badge.svg?token=6INNSA35FZ)](https://codecov.io/gh/gabazar/gabazar-editoras)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Contexto
 Esse serviço faz parte do projeto [Gabazar](https://github.com/gabazar/gabazar), esse serviço atende o dominio de Editoras.
