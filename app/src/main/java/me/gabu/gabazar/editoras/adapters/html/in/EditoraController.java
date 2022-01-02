@@ -39,6 +39,7 @@ public class EditoraController {
         log.info("[POST] [/editoras] Request: {}", editoraDTO);
 
         validaToken(token);
+
         Editora editora = mapper.editoraDtoToEditora(editoraDTO);
         Editora editoraCriada = service.criarEditora(editora, getUsuario(token));
 
@@ -83,7 +84,6 @@ public class EditoraController {
 
         return mapper.editoraToEditoraDto(service.listarEditoras(nome));
     }
-
 
     private String getUsuario(String token) {
         return tokenService.recuperarUsuario(token);
