@@ -2,13 +2,14 @@ package me.gabu.gabazar.editoras.adapters.html.in;
 
 import java.util.Collection;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -44,23 +45,17 @@ public class EditoraController {
         return mapper.editoraToEditoraDto(editoraCriada);
     }
 
-    @GetMapping(produces = "application/json")
-    public @ResponseBody Collection<EditoraDTO> get(@RequestParam(required = false) String nome,
-            @RequestHeader("token") String token) {
-        validaToken(token);
-
-        return mapper.editoraToEditoraDto(service.buscarEditoras(nome));
-    }
-
     @GetMapping(value = "/{id}", produces = "application/json")
-    public @ResponseBody EditoraDTO getByID(@PathParam("id") String id, @RequestHeader("token") String token) {
+    public @ResponseBody EditoraDTO getByID(@PathVariable("id") String id, @RequestHeader("token") String token) {
+        log.info("[GET] [/editoras/{}]", id);
+
         validaToken(token);
 
-        return mapper.editoraToEditoraDto(service.consultaEditora(id));
+        return mapper.editoraToEditoraDto(service.consultarEditora(id));
     }
 
     @PatchMapping(value = "/{id}", produces = "application/json")
-    public @ResponseBody EditoraDTO patch(@PathParam("id") String id, @RequestHeader("token") String token,
+    public @ResponseBody EditoraDTO patch(@PathVariable("id") String id, @RequestHeader("token") String token,
             @RequestBody EditoraDTO editoraDTO) {
         log.info("[PATCH] [/editoras/{}] Request: {}", id, editoraDTO);
 
@@ -72,12 +67,23 @@ public class EditoraController {
     }
 
     @DeleteMapping(value = "/{id}", produces = "application/json")
-    public @ResponseBody void delete(@PathParam("id") String id, @RequestHeader("token") String token) {
+    public ResponseEntity<EditoraDTO> delete(@PathVariable("id") String id, @RequestHeader("token") String token) {
         log.info("[DELETE] [/editoras/{}]", id);
 
         validaToken(token);
         service.apagarEditora(id, getUsuario(token));
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
     }
+
+    @GetMapping
+    public @ResponseBody Collection<EditoraDTO> get(@RequestParam(required = false) String nome,
+            @RequestHeader("token") String token) {
+        validaToken(token);
+
+        return mapper.editoraToEditoraDto(service.listarEditoras(nome));
+    }
+
 
     private String getUsuario(String token) {
         return tokenService.recuperarUsuario(token);

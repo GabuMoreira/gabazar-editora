@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import me.gabu.gabazar.editoras.adapters.data.dao.EditoraDAO;
-import me.gabu.gabazar.editoras.core.model.Editora;
 import me.gabu.gabazar.editoras.core.usecases.ApagarEditoraUseCase;
 import me.gabu.gabazar.editoras.core.usecases.ConsultarEditoraUseCase;
 
@@ -20,10 +19,7 @@ public class ApagarEditoraUseCaseImpl implements ApagarEditoraUseCase {
     public void run(String editoraId, String usuario) {
         log.info("[USECASE] [DELETE] {}", editoraId);
 
-        Editora editora = consultarUC.run(editoraId);
-        editora.setUsuarioAlteracao(usuario);
-
-        dao.delete(editora);
+        dao.delete(consultarUC.run(editoraId));
     }
 
 }
