@@ -1,4 +1,4 @@
-# Gabazar-editoras [![Build Status](https://app.travis-ci.com/gabazar/gabazar-editoras.svg?branch=main)](https://app.travis-ci.com/gabazar/gabazar-editoras)
+# Gabazar-editoras [![Build Status](https://app.travis-ci.com/gabazar/gabazar-editoras.svg?branch=main)](https://app.travis-ci.com/gabazar/gabazar-editoras) [![codecov](https://codecov.io/gh/gabazar/gabazar-editoras/branch/main/graph/badge.svg?token=6INNSA35FZ)](https://codecov.io/gh/gabazar/gabazar-editoras)
 Gabazar MS Editoras
 
 ## Contexto
