@@ -30,7 +30,7 @@ public class ValidationServiceImpl implements ValidationService {
         Set<ConstraintViolation<Editora>> contraints = getContraints(editora, validation);
 
         if (!CollectionUtils.isEmpty(contraints))
-            throw new BadRequestException(processaContraint(contraints).toString());
+            throw new BadRequestException(processaContraint(contraints));
 
     }
 
