@@ -1,4 +1,4 @@
-package me.gabu.gabazar.editoras.adapters.html.in;
+package me.gabu.gabazar.editoras.adapters.http.in;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -25,7 +25,6 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
     public final ResponseEntity<ErrorData> handleAllExceptions(Exception ex, WebRequest request) {
         return buildErrorData(ex, ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, request);
     }
-
     @ExceptionHandler(NotFoundException.class)
     public final ResponseEntity<ErrorData> handleNotFoundException(NotFoundException ex, WebRequest request) {
         request.getContextPath();
@@ -54,7 +53,7 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(errorData, status);
     }
 
-    private String getPath(WebRequest request) {
+    String getPath(WebRequest request) {
         return ((ServletWebRequest) request).getRequest().getServletPath();
     }
 }

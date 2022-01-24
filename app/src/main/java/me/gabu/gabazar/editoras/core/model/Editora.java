@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -12,6 +13,7 @@ import me.gabu.gabazar.editoras.service.validations.Update;
 
 @Getter
 @Setter
+@Builder
 @ToString
 public class Editora {
     private @NotNull(groups = Update.class) String id;
