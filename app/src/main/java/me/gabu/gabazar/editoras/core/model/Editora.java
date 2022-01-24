@@ -16,10 +16,13 @@ import me.gabu.gabazar.editoras.service.validations.Update;
 @Builder
 @ToString
 public class Editora {
-    private @NotNull(groups = Update.class) String id;
-    private @NotNull(groups = { Update.class, Create.class }) String nome;
-    private @NotNull(groups = { Update.class, Create.class }) String cnpj;
-    private @NotNull(groups = { Update.class, Create.class }) String site;
+
+    private static final String MSG_NULO = "não deve ser nulo";
+
+    private @NotNull(groups = Update.class, message = MSG_NULO) String id;
+    private @NotNull(groups = { Update.class, Create.class }, message = MSG_NULO) String nome;
+    private @NotNull(groups = { Update.class, Create.class }, message = MSG_NULO) String cnpj;
+    private @NotNull(groups = { Update.class, Create.class }, message = MSG_NULO) String site;
     private Date dataCriacao;
     private Date dataAlteracao;
     private String usuarioCriacao;

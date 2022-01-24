@@ -37,12 +37,16 @@ public class ValidationServiceImpl implements ValidationService {
     private Set<ConstraintViolation<Editora>> getContraints(Editora editora, ValidationEnum validation) {
         switch (validation) {
         case CREATE:
-            return validator.validate(editora, Create.class);
+            return getValidator().validate(editora, Create.class);
 
         case UPDATE:
         default:
-            return validator.validate(editora, Update.class);
+            return getValidator().validate(editora, Update.class);
         }
+    }
+
+    protected Validator getValidator() {
+        return validator;
     }
 
     private List<String> processaContraint(Set<ConstraintViolation<Editora>> contraints) {
