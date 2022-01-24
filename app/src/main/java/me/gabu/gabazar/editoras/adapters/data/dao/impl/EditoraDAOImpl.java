@@ -18,42 +18,45 @@ import me.gabu.gabazar.editoras.core.model.Editora;
 public class EditoraDAOImpl implements EditoraDAO {
 
     private @Autowired EditoraRepository repository;
-    private EditoraEntityMapper mapper = EditoraEntityMapper.INSTANCE;
 
     @Override
     public Editora findById(String id) {
         EditoraEntity enditoraEntity = repository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Editora não encontrada"));
-        return mapper.editoraEntityToEditora(enditoraEntity);
+        return getMapper().editoraEntityToEditora(enditoraEntity);
     }
 
     @Override
     public Editora save(Editora editora) {
-        EditoraEntity enditoraEntity = mapper.editoraToEditoraEntity(editora);
+        EditoraEntity enditoraEntity = getMapper().editoraToEditoraEntity(editora);
         log.info("[DAO] [PERSIST] [{}]", editora);
-        return mapper.editoraEntityToEditora(repository.save(enditoraEntity));
+        return getMapper().editoraEntityToEditora(repository.save(enditoraEntity));
     }
 
     @Override
     public Collection<Editora> listAll() {
-        return mapper.editoraEntityToEditora(repository.findAll());
+        return getMapper().editoraEntityToEditora(repository.findAll());
     }
 
     @Override
     public Collection<Editora> findByNome(String name) {
-        return mapper.editoraEntityToEditora(repository.findByNome(name));
+        return getMapper().editoraEntityToEditora(repository.findByNome(name));
     }
 
     @Override
     public Editora update(Editora editora) {
-        EditoraEntity enditoraEntity = mapper.editoraToEditoraEntity(editora);
+        EditoraEntity enditoraEntity = getMapper().editoraToEditoraEntity(editora);
         log.info("[DAO] [UPDATE] [{}]", editora);
-        return mapper.editoraEntityToEditora(repository.save(enditoraEntity));
+        return getMapper().editoraEntityToEditora(repository.save(enditoraEntity));
     }
 
     @Override
     public void delete(Editora editora) {
         repository.deleteById(editora.getId());
+    }
+
+    protected EditoraEntityMapper getMapper() {
+        return EditoraEntityMapper.INSTANCE;
     }
 
 }
