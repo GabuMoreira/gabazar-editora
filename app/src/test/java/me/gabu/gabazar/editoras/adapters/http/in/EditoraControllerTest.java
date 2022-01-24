@@ -45,8 +45,8 @@ class EditoraControllerTest {
 
     @BeforeEach
     public void beforeEach() {
-        dto = new EditoraDTO();
-        model = new Editora();
+        dto = EditoraDTO.builder().build();
+        model = Editora.builder().build();
     }
 
     @AfterEach

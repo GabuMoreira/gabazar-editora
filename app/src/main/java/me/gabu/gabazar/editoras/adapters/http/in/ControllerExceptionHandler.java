@@ -53,7 +53,7 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(errorData, status);
     }
 
-    private String getPath(WebRequest request) {
+    String getPath(WebRequest request) {
         return ((ServletWebRequest) request).getRequest().getServletPath();
     }
 }

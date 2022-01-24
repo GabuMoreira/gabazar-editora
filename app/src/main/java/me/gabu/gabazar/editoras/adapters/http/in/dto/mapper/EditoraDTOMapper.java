@@ -19,6 +19,4 @@ public interface EditoraDTOMapper {
 
     Collection<EditoraDTO> modelToDto(Collection<Editora> editora);
 
-    Collection<Editora> dtoToModel(Collection<EditoraDTO> editoradto);
-
 }
