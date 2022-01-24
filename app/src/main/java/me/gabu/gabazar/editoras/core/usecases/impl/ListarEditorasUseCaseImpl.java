@@ -11,7 +11,7 @@ import me.gabu.gabazar.editoras.core.model.Editora;
 import me.gabu.gabazar.editoras.core.usecases.ListarEditorasUseCase;
 
 @Service
-public class ListarEditoraUseCaseImpl implements ListarEditorasUseCase {
+public class ListarEditorasUseCaseImpl implements ListarEditorasUseCase {
 
     private @Autowired EditoraDAO dao;
 
