@@ -56,3 +56,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Gabazar ###
+infra/dev/postgres-data/**

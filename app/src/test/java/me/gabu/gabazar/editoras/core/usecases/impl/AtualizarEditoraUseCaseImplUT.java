@@ -25,7 +25,7 @@ import me.gabu.gabazar.editoras.service.ValidationService;
 import me.gabu.gabazar.editoras.service.validations.ValidationEnum;
 
 @ExtendWith(MockitoExtension.class)
-class AtualizarEditoraUseCaseImplTest {
+class AtualizarEditoraUseCaseImplUT {
 
     private static final String ID = UUID.randomUUID().toString();
     private static final String USUARIO = "Johnny";

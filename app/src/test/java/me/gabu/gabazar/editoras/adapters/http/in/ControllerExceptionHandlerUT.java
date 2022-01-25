@@ -21,7 +21,7 @@ import me.gabu.gabazar.editoras.core.exceptions.ErrorData;
 import me.gabu.gabazar.editoras.core.exceptions.NotFoundException;
 
 @ExtendWith(MockitoExtension.class)
-class ControllerExceptionHandlerTest {
+class ControllerExceptionHandlerUT {
 
     private static final String EX_400 = "BAD_REQUEST";
     private static final String EX_400_ALT = "BAD_REQUEST_2";

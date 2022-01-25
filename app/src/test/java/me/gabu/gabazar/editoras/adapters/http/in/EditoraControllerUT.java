@@ -28,7 +28,7 @@ import me.gabu.gabazar.editoras.service.EditoraService;
 import me.gabu.gabazar.editoras.service.TokenService;
 
 @ExtendWith(MockitoExtension.class)
-class EditoraControllerTest {
+class EditoraControllerUT {
 
     private static final String NOME_EDITORA = "NOME EDITORA";
     private static final String ID_EDITORA = UUID.randomUUID().toString();

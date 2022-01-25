@@ -27,7 +27,7 @@ import me.gabu.gabazar.editoras.core.exceptions.NotFoundException;
 import me.gabu.gabazar.editoras.core.model.Editora;
 
 @ExtendWith(MockitoExtension.class)
-class EditoraDAOImplTest {
+class EditoraDAOImplUT {
 
     private static final String EXC_EDITORA_NAO_ENCONTRADA = "Editora não encontrada";
     private static final String EDITORA_ID = UUID.randomUUID().toString();
