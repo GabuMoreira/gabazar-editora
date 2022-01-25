@@ -1,11 +1,13 @@
 package me.gabu.gabazar.editoras.core.usecases.impl;
 
-import static org.mockito.Mockito.doReturn;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.when;
 
-import java.util.UUID;
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -18,12 +20,12 @@ import me.gabu.gabazar.editoras.adapters.data.dao.EditoraDAO;
 import me.gabu.gabazar.editoras.core.model.Editora;
 
 @ExtendWith(MockitoExtension.class)
-class ConsultarEditoraUseCaseImplTest {
+class ListarEditorasUseCaseImplUT {
 
-    private static final String ID = UUID.randomUUID().toString();
+    private static final String NOME = "NOME";
 
     private @Mock EditoraDAO dao;
-    private @InjectMocks ConsultarEditoraUseCaseImpl uc;
+    private @InjectMocks ListarEditorasUseCaseImpl uc;
 
     private Editora model = Editora.builder().build();
 
@@ -33,12 +35,23 @@ class ConsultarEditoraUseCaseImplTest {
     }
 
     @Test
-    void test() {
-        doReturn(model).when(dao).findById(ID);
+    void runListAll() {
+        when(dao.listAll()).thenReturn(Arrays.asList(model));
 
-        uc.run(ID);
+        Collection<Editora> run = uc.run(null);
 
-        verify(dao, times(1)).findById(ID);
+        assertEquals(1, run.size());
+        verify(dao, times(1)).listAll();
+    }
+
+    @Test
+    void runFindByNome() {
+        when(dao.findByNome(NOME)).thenReturn(Arrays.asList(model));
+
+        Collection<Editora> run = uc.run(NOME);
+
+        assertEquals(1, run.size());
+        verify(dao, times(1)).findByNome(NOME);
     }
 
 }

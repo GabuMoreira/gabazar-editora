@@ -22,7 +22,7 @@ import me.gabu.gabazar.editoras.core.usecases.CriarEditoraUseCase;
 import me.gabu.gabazar.editoras.core.usecases.ListarEditorasUseCase;
 
 @ExtendWith(MockitoExtension.class)
-class EditoraServiceImplTest {
+class EditoraServiceImplUT {
 
     private static final String ID = UUID.randomUUID().toString();
     private static final String USUARIO = "Johnny";

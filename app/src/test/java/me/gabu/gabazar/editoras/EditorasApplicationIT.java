@@ -19,7 +19,7 @@ import me.gabu.gabazar.editoras.service.ValidationService;
 
 @SpringBootTest
 @TestPropertySource("classpath:application-test.properties")
-class EditorasApplicationTests {
+class EditorasApplicationIT {
 
     private @Autowired EditoraController controller;
     private @Autowired EditoraService service;
