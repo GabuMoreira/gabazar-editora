@@ -150,7 +150,7 @@
 				<configuration>
 					<repository>${docker.image.prefix}/${project.artifactId}</repository>
 					<tag>${project.version}</tag>
-					<!-- <skip>true</skip> -->
+					<skip>true</skip>
 				</configuration>
 			</plugin>
 		</plugins>

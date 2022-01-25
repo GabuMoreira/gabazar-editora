@@ -18,7 +18,7 @@ import me.gabu.gabazar.editoras.service.TokenService;
 import me.gabu.gabazar.editoras.service.ValidationService;
 
 @SpringBootTest
-@TestPropertySource("classpath:application-test.properties")
+@TestPropertySource("classpath:_application-test.properties")
 class EditorasApplicationIT {
 
     private @Autowired EditoraController controller;
