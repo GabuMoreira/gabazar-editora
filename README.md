@@ -10,6 +10,36 @@
 
 Esse serviço faz parte do projeto [Gabazar](https://github.com/gabazar/gabazar), esse serviço atende o dominio de Editoras.
 
+## Quickstart
+
+Para testar a ultima versão:
+```bash
+$ cd gabazar-editoras\infra\dev
+$ docker-compose up
+```
+
+Endpoints:
+
+`[POST]` /editoras \
+`[GET]` /editoras \
+`[GET]` /editoras/{id} \
+`[PUT]` /editoras/{id} \
+`[DELETE]` /editoras/{id}
+
+Model:
+```json
+{
+    "id": "6a340ac1-c164-4575-a105-97e9bb7665e1",
+    "nome": "Editora Teste Ltda",
+    "cnpj": "11.111.111/0001-01",
+    "site": "https://www.google.com.br/",
+    "usuarioCriacao": "Bob",
+    "usuarioAlteracao": null,
+    "dataCriacao": "25/01/2022 15:00:00",
+    "dataAlteracao": null
+}
+```
+
 ## Configuração
 
 ### Desenvolvimento
