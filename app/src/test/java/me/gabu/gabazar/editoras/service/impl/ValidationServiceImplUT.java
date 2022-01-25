@@ -25,7 +25,7 @@ import me.gabu.gabazar.editoras.core.model.Editora;
 import me.gabu.gabazar.editoras.service.validations.ValidationEnum;
 
 @ExtendWith(SpringExtension.class)
-class ValidationServiceImplTest {
+class ValidationServiceImplUT {
 
     private static final String ID = "ID";
     private static final String ERRO_CNPJ_NULO = "[cnpj não deve ser nulo]";

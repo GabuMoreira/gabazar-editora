@@ -1,0 +1,4 @@
+src/*
+bin/*
+target/*
+!target/editora-api-1.0.0.jar

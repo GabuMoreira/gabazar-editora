@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 
 import me.gabu.gabazar.editoras.adapters.http.in.EditoraController;
 import me.gabu.gabazar.editoras.core.usecases.ApagarEditoraUseCase;
@@ -17,7 +18,8 @@ import me.gabu.gabazar.editoras.service.TokenService;
 import me.gabu.gabazar.editoras.service.ValidationService;
 
 @SpringBootTest
-class EditorasApplicationTests {
+@TestPropertySource("classpath:_application-test.properties")
+class EditorasApplicationIT {
 
     private @Autowired EditoraController controller;
     private @Autowired EditoraService service;

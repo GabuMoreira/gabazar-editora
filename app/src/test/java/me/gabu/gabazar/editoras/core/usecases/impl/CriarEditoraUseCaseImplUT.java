@@ -1,13 +1,10 @@
 package me.gabu.gabazar.editoras.core.usecases.impl;
 
-import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
-
-import java.util.Arrays;
-import java.util.Collection;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -18,40 +15,35 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import me.gabu.gabazar.editoras.adapters.data.dao.EditoraDAO;
 import me.gabu.gabazar.editoras.core.model.Editora;
+import me.gabu.gabazar.editoras.service.ValidationService;
+import me.gabu.gabazar.editoras.service.validations.ValidationEnum;
 
 @ExtendWith(MockitoExtension.class)
-class ListarEditorasUseCaseImplTest {
+class CriarEditoraUseCaseImplUT {
 
-    private static final String NOME = "NOME";
+    private static final String USUARIO = "Johnny";
 
     private @Mock EditoraDAO dao;
-    private @InjectMocks ListarEditorasUseCaseImpl uc;
+    private @Mock ValidationService validation;
+    private @InjectMocks CriarEditoraUseCaseImpl uc;
 
     private Editora model = Editora.builder().build();
 
     @AfterEach
     public void afterEach() {
         verifyNoMoreInteractions(dao);
+        verifyNoMoreInteractions(validation);
     }
 
     @Test
-    void runListAll() {
-        when(dao.listAll()).thenReturn(Arrays.asList(model));
+    void run() {
+        when(dao.save(model)).thenReturn(model);
+        doNothing().when(validation).validate(model, ValidationEnum.CREATE);
 
-        Collection<Editora> run = uc.run(null);
+        uc.run(model, USUARIO);
 
-        assertEquals(1, run.size());
-        verify(dao, times(1)).listAll();
-    }
-
-    @Test
-    void runFindByNome() {
-        when(dao.findByNome(NOME)).thenReturn(Arrays.asList(model));
-
-        Collection<Editora> run = uc.run(NOME);
-
-        assertEquals(1, run.size());
-        verify(dao, times(1)).findByNome(NOME);
+        verify(dao, times(1)).save(model);
+        verify(validation, times(1)).validate(model, ValidationEnum.CREATE);
     }
 
 }
