@@ -8,8 +8,8 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>me.gabu.gabazar</groupId>
-	<artifactId>editoras</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>editora-api</artifactId>
+	<version>1.0.0</version>
 	<name>Gabazar Editoras</name>
 	<description>Microsserviço de cadastro de Editoras</description>
 	<properties>
@@ -20,6 +20,8 @@
 		<swagger.version>2.9.2</swagger.version>
 		<sonar.organization>gabazar</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<docker.image.prefix>gabazar</docker.image.prefix>
+		<dockerfile-maven-version>1.4.13</dockerfile-maven-version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -120,6 +122,25 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>${dockerfile-maven-version}</version>
+				<executions>
+					<execution>
+						<id>default</id>
+						<goals>
+							<goal>build</goal>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<repository>${docker.image.prefix}/${project.artifactId}</repository>
+					<tag>${project.version}</tag>
+					<skip>true</skip>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
