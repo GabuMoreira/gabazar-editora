@@ -36,7 +36,7 @@ spring.profiles.active=local
 
 ### Container
 
-Para criar uma image do código atual basta comentar a tag `skip` no arquivo POM:
+Para criar uma image do código atual basta comentar a tag `skip` no arquivo POM (ou alterar o valor para false):
 ```xml
 <plugin>
     <groupId>com.spotify</groupId>
